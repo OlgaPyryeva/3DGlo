@@ -1,1 +1,0 @@
-(()=>{"use strict";console.log("file number two"),console.log("file number one")})();
