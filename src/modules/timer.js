@@ -12,9 +12,19 @@ const timer = (deadline) => {
     let dateNow = new Date().getTime();
     timeRemaining = (dateStop - dateNow) / 1000;
     let days = Math.floor(timeRemaining / 60 / 60 / 24);
+
     let hours = Math.floor((timeRemaining / 60 / 60) % 24);
+    if (hours >= 0 && hours < 10) {
+      hours = "0" + hours;
+    }
     let minutes = Math.floor((timeRemaining / 60) % 60);
+    if (minutes >= 0 && minutes < 10) {
+      minutes = "0" + minutes;
+    }
     let seconds = Math.floor(timeRemaining % 60);
+    if (seconds >= 0 && seconds < 10) {
+      seconds = "0" + seconds;
+    }
 
     return { timeRemaining, days, hours, minutes, seconds };
   };
