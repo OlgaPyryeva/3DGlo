@@ -44,10 +44,7 @@ if (hours >= 0 && hours <= 12) {
   str = "AM";
 }
 
-let text = document.createElement("div");
-document.body.append(text);
-
-text.textContent = `Добрый ${timeDay} 
-    Сегодня: ${weekDays[day]}\n
-    Текущее время:${hours}:${min}:${sec} ${str}\n
-    До нового года осталось ${days} дней`;
+document.body.innerHTML = `<p> Добрый ${timeDay} <br\>
+     Сегодня: ${weekDays[day]} <br\>
+     Текущее время:${hours}:${min}:${sec} ${str} <br\>
+     До нового года осталось ${days} дней </p>`;
