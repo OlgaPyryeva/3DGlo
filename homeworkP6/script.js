@@ -48,6 +48,6 @@ let text = document.createElement("div");
 document.body.append(text);
 
 text.textContent = `Добрый ${timeDay} 
-    Сегодня: ${weekDays[day]}\n
-    Текущее время:${hours}:${min}:${sec} ${str}\n
+    Сегодня: ${weekDays[day]}
+    Текущее время:${hours}:${min}:${sec} ${str}
     До нового года осталось ${days} дней`;
