@@ -28,7 +28,7 @@ let sec = date.getSeconds();
 let timeDay = "";
 let str = "";
 
-if (hours >= 22 && hours <= 6) {
+if (hours >= 22 || hours <= 6) {
   timeDay = "ночь";
 } else if (hours > 6 && hours <= 9) {
   timeDay = "утро";
