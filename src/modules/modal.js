@@ -3,11 +3,19 @@ const modal = () => {
   const modalForm = modal.querySelector(".popup-content");
   const buttons = document.querySelectorAll(".popup-btn");
   const closeBtn = modal.querySelector(".popup-close");
+  let width = document.documentElement.clientWidth;
+
+  window.addEventListener("resize", () => {
+    width = document.documentElement.clientWidth;
+  });
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       modal.style.display = "block";
-      modalForm.style.top = 0 + "%";
+      if (width >= 768) {
+        animationModal();
+        modalForm.style.top = "";
+      }
     });
   });
 
@@ -15,7 +23,22 @@ const modal = () => {
     modal.style.display = "none";
   });
 
-  //   console.log(modalForm);
+  let animationModal = () => {
+    let start = Date.now(); // запомнить время начала
+    let timer = setInterval(function () {
+      let timePassed = Date.now() - start;
+
+      if (timePassed >= 200) {
+        clearInterval(timer);
+        return;
+      }
+      showAnimation(timePassed);
+    }, 20);
+
+    function showAnimation(timePassed) {
+      modalForm.style.top = timePassed / 20 + "%";
+    }
+  };
 };
 
 export default modal;
