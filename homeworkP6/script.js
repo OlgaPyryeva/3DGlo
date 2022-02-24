@@ -43,6 +43,12 @@ if (hours >= 0 && hours <= 12) {
 } else if (hours > 12 && hours < 24) {
   str = "AM";
 }
+let englishTime = () => {
+  if (str === "AM") {
+    hours = hours - 12;
+  }
+};
+englishTime();
 
 document.body.innerHTML = `<p> Добрый ${timeDay} <br\>
      Сегодня: ${weekDays[day]} <br\>
