@@ -28,15 +28,33 @@ const modal = () => {
     let timer = setInterval(function () {
       let timePassed = Date.now() - start;
 
-      if (timePassed >= 200) {
+      if (timePassed >= 500) {
         clearInterval(timer);
         return;
       }
       showAnimation(timePassed);
+      showModal(timePassed);
     }, 20);
 
+    // уменьшение опасити от 1 до 0
+    // let animationModalReturn = () => {
+    //   let start = Date.now(); // запомнить время начала
+    //   let timer = setInterval(function () {
+    //     let timePassed = Date.now() - start;
+
+    //     if (timePassed >= 500) {
+    //       clearInterval(timer);
+    //       return;
+    //     }
+    //     showAnimation(timePassed);
+    //     showModal(timePassed);
+    //   }, -20);
+
     function showAnimation(timePassed) {
-      modalForm.style.top = timePassed / 20 + "%";
+      modalForm.style.top = timePassed / 50 + "%";
+    }
+    function showModal(timePassed) {
+      modalForm.style.opacity = timePassed / 500;
     }
   };
 };

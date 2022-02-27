@@ -14,6 +14,14 @@ const menu = () => {
   menuItems.forEach((menuItem) =>
     menuItem.addEventListener("click", handleMenu)
   );
+
+  //попытка выйти на блок сайта, по ссылке и сделать плавный скролл
+  // menuItems.forEach((menuItem) => {
+  //   let hrefElem = menuItem.getAttribute("href");
+  //   let blockMenu = document.getElementById(`${hrefElem}`);
+  //   blockMenu.scrollIntoView({ alignToTop: true, behavior: "smooth" });
+  //   console.log(blockMenu);
+  // });
 };
 
 export default menu;
