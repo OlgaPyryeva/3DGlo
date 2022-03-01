@@ -72,7 +72,7 @@ const slider = () => {
   sliderBlock.addEventListener(
     "mouseenter",
     (e) => {
-      if (e.target.matches(".dot, .portfolio-btn")) {
+      if (e.target.matches(".portfolio-dots, .portfolio-btn")) {
         stopSlide();
       }
     },
@@ -82,7 +82,7 @@ const slider = () => {
   sliderBlock.addEventListener(
     "mouseleave",
     (e) => {
-      if (e.target.matches(".dot, .portfolio-btn")) {
+      if (e.target.matches(".portfolio-dots, .portfolio-btn")) {
         startSlide(timeInterval);
       }
     },
