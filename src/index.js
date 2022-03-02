@@ -9,7 +9,7 @@ import addDots from "./modules/addDots";
 timer("28 february 2022");
 menu();
 modal();
-calc();
+calc(100);
 tabs();
 addDots();
 slider();
