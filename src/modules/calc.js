@@ -55,11 +55,11 @@ const calc = (price = 100) => {
   });
 
   //   валидация ввода в калькуляторе только цифровых значений в поля input
-  // calcInput.forEach((calcItem) => {
-  //   calcItem.addEventListener("input", (e) => {
-  //     e.target.value = e.target.value.replace(/\D+/, "");
-  //   });
-  // });
+  calcInput.forEach((calcItem) => {
+    calcItem.addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/\D+/, "");
+    });
+  });
 
   //В поля ввода type=text и placeholder="Ваше сообщение" позволить
   //ввод только кириллицы в любом регистре, дефиса и пробела.
