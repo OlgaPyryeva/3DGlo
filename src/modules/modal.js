@@ -3,6 +3,8 @@ const modal = () => {
   const modalForm = modal.querySelector(".popup-content");
   const buttons = document.querySelectorAll(".popup-btn");
 
+  console.log(modalForm);
+
   let width = document.documentElement.clientWidth;
 
   window.addEventListener("resize", () => {
@@ -14,21 +16,25 @@ const modal = () => {
       !e.target.closest(".popup-content") ||
       e.target.classList.contains("popup-close")
     ) {
-      modal.style.display = "none";
+      animationModal(false);
+      // modal.style.display = "none";
     }
   });
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      modal.style.display = "block";
       if (width >= 768) {
-        animationModal();
+        modalForm.style.opacity = 0;
         modalForm.style.top = "";
+        modal.style.display = "block";
+        animationModal(true);
+      } else {
+        modal.style.display = "block";
       }
     });
   });
 
-  let animationModal = () => {
+  let animationModal = (showType) => {
     let start = Date.now(); // запомнить время начала
     let timer = setInterval(function () {
       let timePassed = Date.now() - start;
@@ -37,29 +43,25 @@ const modal = () => {
         clearInterval(timer);
         return;
       }
-      showAnimation(timePassed);
-      showModal(timePassed);
+      if (showType) {
+        showAnimation(timePassed);
+        showModal(timePassed);
+      } else {
+        hideModal(timePassed);
+      }
     }, 20);
-
-    // уменьшение опасити от 1 до 0
-    // let animationModalReturn = () => {
-    //   let start = Date.now(); // запомнить время начала
-    //   let timer = setInterval(function () {
-    //     let timePassed = Date.now() - start;
-
-    //     if (timePassed >= 500) {
-    //       clearInterval(timer);
-    //       return;
-    //     }
-    //     showAnimation(timePassed);
-    //     showModal(timePassed);
-    //   }, -20);
 
     function showAnimation(timePassed) {
       modalForm.style.top = timePassed / 50 + "%";
     }
     function showModal(timePassed) {
       modalForm.style.opacity = timePassed / 500;
+    }
+    function hideModal(timePassed) {
+      modalForm.style.opacity = 1 - timePassed / 500;
+      if (modalForm.style.opacity < 0.1) {
+        modal.style.display = "none";
+      }
     }
   };
 };
