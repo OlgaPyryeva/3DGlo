@@ -3,12 +3,10 @@ const calc = (price = 100) => {
   const form1Start = document.querySelector("#form1");
   const form2End = document.querySelector("#form2");
   const formModal = document.querySelector(".popup-content");
-  const formInputType = document.querySelectorAll("input[type='text']");
-  const formInput = document.querySelector(
-    "input[placeholder = 'Ваше сообщение']"
-  );
-  const emailInput = document.querySelectorAll("input[type='email']");
-  const telInput = document.querySelectorAll("input[type='tel']");
+  const userName = document.querySelectorAll("input[name='user_name']");
+  const userMessage = document.querySelector("input[name='user_message']");
+  const userEmail = document.querySelectorAll("input[name='user_email']");
+  const userPhone = document.querySelectorAll("input[name='user_phone']");
 
   const calcBlock = document.querySelector(".calc-block");
   const calcType = document.querySelector(".calc-type");
@@ -16,6 +14,7 @@ const calc = (price = 100) => {
   const calcCount = document.querySelector(".calc-count");
   const calcDay = document.querySelector(".calc-day");
   const total = document.getElementById("total");
+  const forms = document.querySelectorAll("form");
 
   const countCalc = () => {
     const calcTypeValue = +calcType.options[calcType.selectedIndex].value;
@@ -63,29 +62,43 @@ const calc = (price = 100) => {
 
   //В поля ввода type=text и placeholder="Ваше сообщение" позволить
   //ввод только кириллицы в любом регистре, дефиса и пробела.
-  // formInputType.forEach((formItem) => {
-  //   formItem.addEventListener("input", (e) => {
-  //     e.target.value = e.target.value.replace(/[^а-яА-Я\-\s]+/, "");
-  //   });
-  // });
-  // formInput.addEventListener("input", (e) => {
-  //   e.target.value = e.target.value.replace(/[^а-яА-Я\-\s]+/, "");
-  // });
+  forms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const userNameInput = form.querySelector("input[name='user_name']");
+
+      if (/[^а-яА-Я\-\s]+/g.test(userNameInput.value)) {
+        alert(
+          "ошибка, разрешен ввод только кириллицы в любом регистре, дефиса и пробела."
+        );
+      }
+    });
+  });
+
+  userName.forEach((name) => {
+    name.addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/[^а-яА-Я\-\s]+/, "");
+    });
+  });
+
+  userMessage.addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/[^а-яА-Я\-\s]+/, "");
+  });
 
   //В поля ввода type=email позволить ввод только латиницы в любом регистре, цифры и
   //спецсимволы:  @  -  _  . ! ~ * '
   //(Собака , Дефис , Подчеркивание , Точка , Восклицательный знак , Тильда , Звездочка , Одинарная кавычка)
-  // emailInput.forEach((emailItem) => {
-  //   emailItem.addEventListener("input", (e) => {
-  //     e.target.value = e.target.value.replace(/[^\w\@\-\.\!\~\*\']+/, "");
-  //   });
-  // });
-  //В поля ввода type=tel позволить ввод только цифр, круглых скобок и дефис
-  // telInput.forEach((telItem) => {
-  //   telItem.addEventListener("input", (e) => {
-  //     e.target.value = e.target.value.replace(/[^\d\(\)\-]+/, "");
-  //   });
-  // });
+  userEmail.forEach((email) => {
+    email.addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/[^\w\@\-\.\!\~\*\']+/, "");
+    });
+  });
+  // В поля ввода type=tel позволить ввод только цифр, круглых скобок и дефис
+  userPhone.forEach((phone) => {
+    phone.addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/[^\d\(\)\-]+/, "");
+    });
+  });
 };
 
 export default calc;
