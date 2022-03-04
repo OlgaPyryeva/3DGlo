@@ -25,6 +25,7 @@ const menu = () => {
     const blockMenu = document.querySelector(`${hrefElem}`);
 
     menuItem.addEventListener("click", (e) => {
+      e.preventDefault();
       blockMenu.scrollIntoView({ alignToTop: true, behavior: "smooth" });
     });
   });
