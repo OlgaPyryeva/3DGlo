@@ -1,3 +1,5 @@
+import { animate } from "./helpers";
+
 const calc = (price = 100) => {
   let calcInput = document.querySelectorAll("input.calc-item");
   const form1Start = document.querySelector("#form1");
@@ -39,7 +41,19 @@ const calc = (price = 100) => {
     } else {
       totalValue = 0;
     }
-    total.textContent = totalValue;
+    //total.textContent = totalValue;
+    animate({
+      duration: 500,
+      timing(timeFraction) {
+        return timeFraction;
+      },
+      draw(progress) {
+        for (let i = 0; i <= totalValue; i++) {
+          total.textContent = Math.floor(i * progress);
+        }
+      },
+    });
+    console.log(totalValue);
   };
 
   calcBlock.addEventListener("input", (e) => {

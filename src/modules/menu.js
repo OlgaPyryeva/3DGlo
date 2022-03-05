@@ -18,8 +18,6 @@ const menu = () => {
     }
   });
 
-  //попытка выйти на блок сайта, по ссылке и сделать плавный скролл
-
   menuItems.forEach((menuItem) => {
     const hrefElem = menuItem.getAttribute("href");
     const blockMenu = document.querySelector(`${hrefElem}`);
