@@ -5,6 +5,7 @@ import calc from "./modules/calc";
 import tabs from "./modules/tabs";
 import slider from "./modules/slider";
 import scrollBtn from "./modules/scroll";
+import sendForm from "./modules/sendForm";
 
 timer("28 february 2022");
 menu();
@@ -13,3 +14,12 @@ calc(100);
 tabs();
 slider();
 scrollBtn();
+sendForm({
+  formID: "form1",
+  someElem: [
+    {
+      type: "block",
+      id: "total",
+    },
+  ],
+});
