@@ -40,7 +40,6 @@ const sendForm = ({ formID, someElem = [] }) => {
       success = false;
     }
 
-    // загрузка innerHtml
     return success;
   };
 
@@ -58,8 +57,10 @@ const sendForm = ({ formID, someElem = [] }) => {
     const formElements = document.querySelectorAll("input");
     const formData = new FormData(form);
     const formBody = {};
+    const preloader = `<section class ='sk-rotating-plane'></section>`;
 
-    statusBlock.textContent = loadText;
+    //statusBlock.textContent = loadText;
+    statusBlock.innerHTML = preloader;
     form.append(statusBlock);
 
     formData.forEach((val, key) => {
