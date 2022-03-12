@@ -4,15 +4,43 @@ const sendForm = ({ formID, someElem = [] }) => {
   const loadText = "Зарузка...";
   const errorText = "Ошибка ...";
   const successText = "Спасибо! Наш менеджер с вами свяжется.";
+  const errorValidation = "Данные не валидны...";
 
-  const validate = (list) => {
+  const validate = () => {
     let success = true;
+    const userPhone = form.querySelector("[name=user_phone]");
+    const userName = form.querySelector("[name=user_name]");
+    const userMessage = form.querySelector("[name=user_message]");
 
-    // list.forEach((input) => {
-    //   if (!input.classList.contains("success")) {
-    //     success = false;
-    //   }
-    // });
+    // Сделать валидацию данных при отправке:
+
+    //В поля name="user_phone" разрешить ввод только цифр, знака “+”, круглых скобок и дефис
+    //В поля name="user_name" разрешить ввод только кириллицы и пробелов
+    //В поля name="user_message" разрешить только кириллицу, пробелы, цифры и знаки препинания.
+    if (userMessage) {
+      if (/[а-яА-Я\d\s\.\,\!\?\;\:\-]+/g.test(userMessage.value)) {
+        console.log("userMessage.value" + userMessage.value);
+        success = true;
+      } else {
+        success = false;
+      }
+    }
+
+    if (/[а-яА-Я\s]+/g.test(userName.value)) {
+      console.log("userName.value" + userName.value);
+      success = true;
+    } else {
+      success = false;
+    }
+
+    if (/[\d\+\(\)\-]+/g.test(userPhone.value)) {
+      console.log("userPhone.value" + userPhone.value);
+      success = true;
+    } else {
+      success = false;
+    }
+
+    // загрузка innerHtml
     return success;
   };
 
@@ -48,8 +76,7 @@ const sendForm = ({ formID, someElem = [] }) => {
       }
     });
 
-    console.log();
-    if (validate(formElements)) {
+    if (validate()) {
       sendData(formBody)
         .then((data) => {
           statusBlock.textContent = successText;
@@ -72,8 +99,11 @@ const sendForm = ({ formID, someElem = [] }) => {
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-
-      submitForm();
+      if (validate()) {
+        submitForm();
+      } else {
+        statusBlock.textContent = errorValidation;
+      }
     });
   } catch (error) {
     console.log(error.message);

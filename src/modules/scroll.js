@@ -1,9 +1,10 @@
 const scrollBtn = () => {
   const scrollBtn = document.querySelector('a[href="#service-block"]');
+  const serviceBlock = document.getElementById("service-block");
 
   scrollBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    scrollBtn.scrollIntoView({ alignToTop: true, behavior: "smooth" });
+    serviceBlock.scrollIntoView({ alignToTop: true, behavior: "smooth" });
   });
 };
 

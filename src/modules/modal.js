@@ -1,4 +1,5 @@
 import { animate } from "./helpers";
+import sendForm from "./sendForm";
 
 const modal = () => {
   const modal = document.querySelector(".popup");

@@ -48,9 +48,7 @@ const calc = (price = 100) => {
         return timeFraction;
       },
       draw(progress) {
-        for (let i = 0; i <= totalValue; i++) {
-          total.textContent = Math.floor(i * progress);
-        }
+        total.textContent = Math.floor(totalValue * progress);
       },
     });
     console.log(totalValue);
