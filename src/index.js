@@ -6,6 +6,7 @@ import tabs from "./modules/tabs";
 import slider from "./modules/slider";
 import scrollBtn from "./modules/scroll";
 import sendForm from "./modules/sendForm";
+import swiper from "./modules/swiper";
 
 timer("28 february 2022");
 menu();
@@ -29,3 +30,4 @@ sendForm({
 sendForm({
   formID: "form3",
 });
+swiper();
