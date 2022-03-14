@@ -51,7 +51,6 @@ const calc = (price = 100) => {
         total.textContent = Math.floor(totalValue * progress);
       },
     });
-    console.log(totalValue);
   };
 
   calcBlock.addEventListener("input", (e) => {

@@ -14,6 +14,7 @@ const menu = () => {
       e.target.closest(".active-menu") ||
       e.target.classList.contains("close-btn")
     ) {
+      e.preventDefault();
       handleMenu();
     }
   });

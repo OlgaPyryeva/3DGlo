@@ -8,7 +8,7 @@ import scrollBtn from "./modules/scroll";
 import sendForm from "./modules/sendForm";
 import swiper from "./modules/swiper";
 
-timer("28 february 2022");
+timer("1 april 2022");
 menu();
 modal();
 calc(100);
@@ -26,8 +26,20 @@ sendForm({
 });
 sendForm({
   formID: "form2",
+  someElem: [
+    {
+      type: "block",
+      id: "total",
+    },
+  ],
 });
 sendForm({
   formID: "form3",
+  someElem: [
+    {
+      type: "block",
+      id: "total",
+    },
+  ],
 });
 swiper();

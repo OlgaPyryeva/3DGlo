@@ -1,7 +1,6 @@
 const sendForm = ({ formID, someElem = [] }) => {
   const form = document.getElementById(formID);
   const statusBlock = document.createElement("div");
-  const loadText = "Зарузка...";
   const errorText = "Ошибка ...";
   const successText = "Спасибо! Наш менеджер с вами свяжется.";
   const errorValidation = "Данные не валидны...";
@@ -18,8 +17,7 @@ const sendForm = ({ formID, someElem = [] }) => {
     //В поля name="user_name" разрешить ввод только кириллицы и пробелов
     //В поля name="user_message" разрешить только кириллицу, пробелы, цифры и знаки препинания.
     if (userMessage) {
-      if (/[а-яА-Я\d\s\.\,\!\?\;\:\-]+/g.test(userMessage.value)) {
-        console.log("userMessage.value" + userMessage.value);
+      if (/[а-яёА-ЯЁ\d\s\.|\?|!;:-]+/g.test(userMessage.value)) {
         success = true;
       } else {
         success = false;
@@ -27,14 +25,12 @@ const sendForm = ({ formID, someElem = [] }) => {
     }
 
     if (/[а-яА-Я\s]+/g.test(userName.value)) {
-      console.log("userName.value" + userName.value);
       success = true;
     } else {
       success = false;
     }
 
     if (/[\d\+\(\)\-]+/g.test(userPhone.value)) {
-      console.log("userPhone.value" + userPhone.value);
       success = true;
     } else {
       success = false;
@@ -58,8 +54,8 @@ const sendForm = ({ formID, someElem = [] }) => {
     const formData = new FormData(form);
     const formBody = {};
     const preloader = `<section class ='sk-rotating-plane'></section>`;
+    const total = document.getElementById("total");
 
-    //statusBlock.textContent = loadText;
     statusBlock.innerHTML = preloader;
     form.append(statusBlock);
 
@@ -83,6 +79,7 @@ const sendForm = ({ formID, someElem = [] }) => {
           statusBlock.textContent = successText;
           formElements.forEach((input) => {
             input.value = "";
+            total.textContent = 0;
           });
         })
         .catch((error) => {
