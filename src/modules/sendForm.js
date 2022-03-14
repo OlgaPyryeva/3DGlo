@@ -17,7 +17,7 @@ const sendForm = ({ formID, someElem = [] }) => {
     //В поля name="user_name" разрешить ввод только кириллицы и пробелов
     //В поля name="user_message" разрешить только кириллицу, пробелы, цифры и знаки препинания.
     if (userMessage) {
-      if (/[а-яёА-ЯЁ\d\s\.|\?|!;:-]+/g.test(userMessage.value)) {
+      if (/[а-яёА-ЯЁ\d\s\.\?\!\;\:\-]+/g.test(userMessage.value)) {
         success = true;
       } else {
         success = false;

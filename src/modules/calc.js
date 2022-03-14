@@ -93,7 +93,7 @@ const calc = (price = 100) => {
   });
 
   userMessage.addEventListener("input", (e) => {
-    e.target.value = e.target.value.replace(/[^а-яА-Я\-\s]+/, "");
+    e.target.value = e.target.value.replace(/[^а-яёА-ЯЁ\-\s\.\,\!\?\:\;]+/, "");
   });
 
   //В поля ввода type=email позволить ввод только латиницы в любом регистре, цифры и
